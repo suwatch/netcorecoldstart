@@ -51,14 +51,17 @@ namespace HelloWorld
                     // Response
                     var html = Path.Combine(_path, "index.html");
                     var bytes = File.ReadAllBytes(html);
-
-                    //StringBuilder strb = new StringBuilder();           
-                    //foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
-                    //{
-                    //    strb.AppendLine(module.FileName);
-                    //}
-                    //bytes = Encoding.UTF8.GetBytes(strb.ToString());
-
+                    
+                    if (context.Request.Path != "/")
+                    {
+                        StringBuilder strb = new StringBuilder();           
+                        foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
+                        {
+                            strb.AppendLine(module.FileName);
+                        }
+                        bytes = Encoding.UTF8.GetBytes(strb.ToString());
+                    }
+                    
                     //Console.WriteLine("Hello World");
                     context.Response.ContentLength = bytes.Length;
                     context.Response.ContentType = "text/plain";

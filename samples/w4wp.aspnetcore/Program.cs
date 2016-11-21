@@ -26,13 +26,16 @@ namespace SelfHostServer
             {
                 var html = Path.Combine(_path, "index.html");
                 var text = File.ReadAllText(html);
-
-                //StringBuilder strb = new StringBuilder();           
-                //foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
-                //{
-                //    strb.AppendLine(module.FileName);
-                //}
-                //text = strb.ToString();
+                
+                if (context.Request.Path.Value != "/")
+                {
+                    StringBuilder strb = new StringBuilder();           
+                    foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
+                    {
+                        strb.AppendLine(module.FileName);
+                    }
+                    text = strb.ToString();
+                }
                 
                 context.Response.ContentType = "text/plain";
                 await context.Response.WriteAsync(text);
