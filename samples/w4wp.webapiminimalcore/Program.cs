@@ -36,7 +36,7 @@ namespace SelfHostServer
 
         public static void Main(string[] args)
         {
-            _path = Environment.ExpandEnvironmentVariables(@"%windir%\System32\inetsrv\w4wp.webapinetcore");
+            _path = Environment.ExpandEnvironmentVariables(@"%windir%\System32\inetsrv\w4wp.webapiminimalcore");
             
             try
             {

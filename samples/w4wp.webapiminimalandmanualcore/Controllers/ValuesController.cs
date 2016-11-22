@@ -36,7 +36,7 @@ namespace WebApiNetCore.Controllers
                 }
                 else
                 {
-                    var indexHtml = Path.Combine(Environment.ExpandEnvironmentVariables(@"%ProgramFiles(x86)%\w4wp.webapinetcore"), "index.html");
+                    var indexHtml = Path.Combine(Environment.ExpandEnvironmentVariables(@"%ProgramFiles(x86)%\w4wp.webapiminimalandmanualcore"), "index.html");
                     return System.IO.File.ReadAllText(indexHtml);
                 }
             }
